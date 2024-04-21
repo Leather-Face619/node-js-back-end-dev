@@ -23,7 +23,7 @@
           <% a =  el.split(".")  %>
 <div class="task bg-zinc-700 rounded-xl min-w-72 p-2">
             <h1 class=" tracking-tighter text-3xl"><%= a[0]%></h1>
-            <a class="text-blue-500 hover:cursor-pointer font-extrabold " href="#">Read more</a>
+            <a class="text-blue-500 hover:cursor-pointer font-extrabold " href="file/<%= a[0] %>">Read more</a>
         </div>
         <% })} else{  %>
         <h1 class="text-zinc-500 text-2xl font-bold">no task yet.</h1>
