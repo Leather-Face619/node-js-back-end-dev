@@ -18,11 +18,25 @@ app.get('/file/:fname', (req, res) => {
        res.render('show',{filename: req.params.fname,filedata: fdata})
     })
 })
+app.get('/edit/:fname', (req, res) => {
+    res.render("edit", { fname: req.params.fname})
+})
 app.post('/create', (req, res) => {
     fs.writeFile(`./files/${req.body.title.split(" ").join("_")}.txt`, `${req.body.details}`, (err) => {
         console.log(err)
     })
     res.redirect('/')
+})
+app.post('/edit', (req, res) => {
+ 
+    fs.rename(`./files/${req.body.previous}.txt`,`./files/${req.body.new.split(" ").join("_")}.txt`,(err) => {
+        if (err) {
+          console.error('Error renaming file:', err);
+        } else {
+        
+            res.redirect('/')
+        }
+      });
 })
 
 app.listen(3000, (req, res) => console.log("app runnig on 3000"))
