@@ -1,0 +1,5 @@
+1. cookie ko setup karo
+2. bcrypt ko install karo password ko encrypt and decrypt ke liye 
+hum hash ko decrypt nahi kar sakte hum bus hash ho plain password se compare kar ke pata laga sakte hai
+
+3. jwt(jsonwebtoken) kya hai ? 
