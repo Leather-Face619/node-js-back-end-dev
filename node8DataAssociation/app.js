@@ -1,11 +1,11 @@
-const express = require('express');
+const express = require('express')
 const userModel = require('./models/user')
-const postModel = require('./models/post');
-const { default: mongoose } = require('mongoose');
+const postModel = require('./models/post')
+const { default: mongoose } = require('mongoose')
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send("fff");
+    res.send("fff")
 })
 app.get('/create', async (req, res) => {
    var user = await userModel.create({
