@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="bg-zinc-700 w-full h-screen text-white p-5">
+        <form autocomplete="off" action="/upload" method="post" enctype="multipart/form-data"> 
+            <input  class="rounded-xl " type="file" name="image" >
+            <br>
+            <input class="px-5 py-2 rounded-md bg-blue-500 my-10" type="submit" value="Upload File">
+        </form>
+    </div>
+</body>
+
+</html>

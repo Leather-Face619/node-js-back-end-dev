@@ -10,13 +10,21 @@
 </head>
 
 <body class="bg-zinc-800 text-white px-5 py-10 font-bold text-2xl">
+   
     <div id="logout" class="w-[10%] absolute right-0">
         <a class=" font-bold  px-2 py-1 bg-red-700 rounded-xl " href="/logout">Logout</a>
     </div>
-    <h1>Hello <%= user.name%> 👋</h1>
+    <div class="flex align-start gap-5">
+        <div class="w-14 h-14 overflow-hidden rounded-md">
+            <a href="/profile/upload">
+                <img class="w-full h-full object-cover " src="/images/uploads/<%=user.profilePic%>" alt=""></a>
+        </div>
+        <h1>Hello <%= user.name%> 👋</h1>
+    </div>
+    
     <h1 class="mt-10 mb-2">You can create a new post.</h1>
-    <form action="/post" method="post">
-        <textarea class="bg-zinc-700 rounded-md w-1/2 outline-none" placeholder="write Somthing "
+    <form action="/post" method="post"  onsubmit="return validateForm()">
+        <textarea id="content" class="bg-zinc-700 rounded-md w-1/2 outline-none" placeholder="write Somthing "
             name="content"></textarea> <br>
         <button type="submit" class="border-2 m-2 px-2 py-1 rounded-xl border-zinc-100">Create</button>
 
@@ -33,11 +41,14 @@
                     <p class="text-xl font-light tracking-tight">
                         <%= e.content %>
                     </p>
-                  <p class="text-xl text-zinc-200 mt-5"><%= e.likes.length %> Likes</p>
+                    <p class="text-xl text-zinc-200 mt-5">
+                        <%= e.likes.length %> Likes
+                    </p>
                     <div class="btn w-full flex p-2 gap-8">
                         <a href="/like/<%=e._id %>" class="text-blue-700">
-                            <%= e.likes.indexOf(user._id) ? "Like":"Unlike" %></a>
-                        <a href="/edit/<%=e._id %>" class="text-zinc-600" >Edit</i></a>
+                            <%= e.likes.indexOf(user._id) ? "Like" :"Unlike" %>
+                        </a>
+                        <a href="/edit/<%=e._id %>" class="text-zinc-600">Edit</i></a>
                     </div>
                 </div>
 
@@ -46,5 +57,14 @@
         </div>
     </div>
 </body>
-
+<script>
+    function validateForm() {
+        var content = document.getElementById("content").value;
+        if (content.trim() == "") {
+            alert("Content cannot be empty!");
+            return false; // Form submission will be cancelled
+        }
+        return true; // Form will be submitted
+    }
+</script>
 </html>
